@@ -1,0 +1,89 @@
+git clone https://github.com/jithinrajmm/library-management.git
+
+pip install requirements.txt 
+
+python manage.py makemigrations
+
+python manage.py migrate
+
+python manage.py runserver
+
+open post man 
+#############################################################
+FOR REGISTERING LIBRARIAN
+http://127.0.0.1:8000/api/register/librarian/
+example:
+{
+    "name": "a",
+    "email":"a@gmail.com",
+    "is_librarian": "True",
+    "password":"1234"
+}
+
+#############################################################
+FOR REGISTERING MEMBER
+http://127.0.0.1:8000/api/register/member/
+example:
+{
+    "name": "a",
+    "email":"a@gmail.com",
+    "is_member": "True",
+    "password":"1234"
+}
+
+#############################################################
+FOR LOGIN
+http://127.0.0.1:8000/api/login/
+example:
+{
+    "email": "mm@gmail.com",
+    "password":"1234"
+}
+
+#############################################################
+
+FOR LOGOUT
+http://127.0.0.1:8000/api/logout/
+
+#############################################################
+
+FOR TOKEN REFRESH
+http://127.0.0.1:8000/api/token/refresh/
+
+#############################################################
+
+FOR ADDING AND GETTNG ALL THE BOOKS
+http://127.0.0.1:8000/api/books/
+
+--------------------------------------------------------------------
+BOOK UPDATE,DELETE,GET 
+http://127.0.0.1:8000/api/books/<int:pk>/
+--------------------------------------------------------------------
+FOR GETTING POST,GET,DELETE A MEMBER BY LIBRARIAN
+http://127.0.0.1:8000/api/members/<int:pk>/
+--------------------------------------------------------------------
+FOR GETTING ALL THE MEMBERS
+http://127.0.0.1:8000/api/allmembers/
+--------------------------------------------------------------------
+FOR BORROWING BOOK , NEED TO PASS THE BOOK ID AND MEMBER ID AS BODY PARAMS
+http://127.0.0.1:8000/api/borrow/
+example:
+ {
+        "book": 1,
+        "user": 8
+    }
+--------------------------------------------------------------------
+FOR RETURNING THE BOOKS
+http://127.0.0.1:8000/api/return/<int:pk>/
+--------------------------------------------------------------------
+FOR DELETING THE MEMBER
+http://127.0.0.1:8000/api/delete_member/<int:pk>/
+
+
+
+Models:
+      User -> for storing user informations
+
+	Books -> for storing the books informations
+
+	BooksManagement -> adding the memeber and borrowed book id 
