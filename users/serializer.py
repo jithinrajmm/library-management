@@ -90,7 +90,7 @@ class BookManagementSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError('Not available')
         book.status = 'borrowed'
         book.save()
-        instance,created = BooksManagement.get_or_create(**validated_data)
+        instance,created = BooksManagement.objects.get_or_create(**validated_data)
         if instance:
             return instance
         if created:
