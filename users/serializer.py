@@ -86,9 +86,11 @@ class BookManagementSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("book is not available")
         if BooksManagement.objects.filter(book=book_id,user=user_id,status='borrowed').exists():
             raise serializers.ValidationError('Your are already borrowed')
+        if book.status == 'borrowed':
+            raise serializers.ValidationError('Not available')
         book.status = 'borrowed'
         book.save()
-        instance,created = self.Meta.model.get_or_create(**validated_data)
+        instance,created = BooksManagement.get_or_create(**validated_data)
         if instance:
             return instance
         if created:
