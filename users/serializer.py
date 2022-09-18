@@ -75,7 +75,7 @@ class MemberManagementSerilizer(serializers.ModelSerializer):
 class BookManagementSerializer(serializers.ModelSerializer):
     class Meta:
         model = BooksManagement
-        fields = ['id','book','user']
+        fields = ['id','book','user','status']
         
     def create(self, validated_data):
         book_id = validated_data.get('book')
